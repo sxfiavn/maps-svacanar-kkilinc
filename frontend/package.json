@@ -1,0 +1,6 @@
+{
+  "devDependencies": {
+    "playwright": "^1.39.0",
+    "playwright-test": "^12.3.8"
+  }
+}

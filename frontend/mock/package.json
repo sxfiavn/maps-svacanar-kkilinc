@@ -1,0 +1,54 @@
+{
+  "name": "cs32-sprint3-gearup",
+  "version": "22.2.0",
+  "description": "Brown CSCI0320 Sprint 3 Gearup for Fall 2023",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4",
+    "playwright": "^1.39.0",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.38.1",
+    "@testing-library/dom": "^8.18.1",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.2.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.1",
+    "@types/node": "^20.8.5",
+    "@vitejs/plugin-react": "^4.1.0",
+    "eslint": "^8.15.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.4.10",
+    "web-vitals": "^2.1.4"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ],
+    "rules": {
+      "testing-library/no-dom-import": "off"
+    }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
