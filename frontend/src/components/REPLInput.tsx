@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction, useState, useEffect, useRef } from "react";
 import { ControlledInput } from "./ControlledInput";
 import { useContext } from "react";
 import { GeoJSONContext } from "./GeoJSONContext";
-import { functions } from "./REPLFunctions";
+// import { functions } from "./REPLFunctions";
 
 // This interface contains the history (a list of 2D Arrays)
 // and a setHistory function
