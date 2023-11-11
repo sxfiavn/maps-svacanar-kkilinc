@@ -1,0 +1,22 @@
+{
+  "type": "Feature",
+  "geometry": {
+    "type": {"Point": 1, "Vertex" : 2},
+    "coordinates": [125.6, 10.1]
+  },
+
+  "properties": { "place" :
+    {
+      "name": "Dinagat Islands",
+      "location": {
+        "cold": "providence",
+        "hot": "miami",
+        "unknown": {
+          "middle": "connect",
+          "north": "boston",
+          "south": "dallas"
+        }
+      }
+    }
+  }
+}

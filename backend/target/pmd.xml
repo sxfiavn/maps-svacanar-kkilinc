@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.46.0" timestamp="2023-09-29T11:05:47.676">
+<file name="/Users/nicolaskim/Desktop/cs320/server-nickkim1-dita-hss/src/main/java/edu/brown/cs/student/main/csv/Main.java">
+<violation beginline="19" endline="19" begincolumn="25" endcolumn="28" rule="UnusedFormalParameter" ruleset="Best Practices" package="edu.brown.cs.student.main.csv" class="Main" method="Main" variable="args" externalInfoUrl="https://pmd.github.io/pmd-6.46.0/pmd_rules_java_bestpractices.html#unusedformalparameter" priority="3">
+Avoid unused constructor parameters such as 'args'.
+</violation>
+</file>
+<file name="/Users/nicolaskim/Desktop/cs320/server-nickkim1-dita-hss/src/main/java/edu/brown/cs/student/main/csv/searcher/Search.java">
+<violation beginline="95" endline="98" begincolumn="9" endcolumn="9" rule="CollapsibleIfStatements" ruleset="Design" package="edu.brown.cs.student.main.csv.searcher" class="Search" method="searchRowsWithFromColumnNumber" externalInfoUrl="https://pmd.github.io/pmd-6.46.0/pmd_rules_java_design.html#collapsibleifstatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="/Users/nicolaskim/Desktop/cs320/server-nickkim1-dita-hss/src/main/java/edu/brown/cs/student/main/server/DatasourceException.java">
+<violation beginline="16" endline="16" begincolumn="15" endcolumn="19" rule="UnusedLocalVariable" ruleset="Best Practices" package="edu.brown.cs.student.main.server" class="DatasourceException" method="DatasourceException" variable="cause" externalInfoUrl="https://pmd.github.io/pmd-6.46.0/pmd_rules_java_bestpractices.html#unusedlocalvariable" priority="3">
+Avoid unused local variables such as 'cause'.
+</violation>
+</file>
+<file name="/Users/nicolaskim/Desktop/cs320/server-nickkim1-dita-hss/src/main/java/edu/brown/cs/student/main/server/datasource/broadband_caching/CachedBroadbandDataSource.java">
+<violation beginline="25" endline="25" begincolumn="58" endcolumn="80" rule="UnusedPrivateField" ruleset="Best Practices" package="edu.brown.cs.student.main.server.datasource.broadband_caching" class="CachedBroadbandDataSource" variable="countyNamesToCodesCache" externalInfoUrl="https://pmd.github.io/pmd-6.46.0/pmd_rules_java_bestpractices.html#unusedprivatefield" priority="3">
+Avoid unused private fields such as 'countyNamesToCodesCache'.
+</violation>
+</file>
+</pmd>

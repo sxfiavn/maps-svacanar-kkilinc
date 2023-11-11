@@ -1,5 +1,0 @@
-{
-  "responseType": "failure",
-  "errorType": "error_bad_request",
-  "errorDesc": "/failure.csv (No such file or directory)"
-}
