@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>CreateListString xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../../../apidocs/edu/brown/cs/student/main/csv/creators/CreateListString.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> edu.brown.cs.student.main.csv.creators;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> java.util.List;
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_javadoccomment">/** This class converts each row of the CSV into a string. */</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="CreateListString" href="../../../../../../../edu/brown/cs/student/main/csv/creators/CreateListString.html#CreateListString">CreateListString</a> <strong class="jxr_keyword">implements</strong> CreatorFromRow&lt;String&gt; {
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>     <strong class="jxr_keyword">public</strong> <a name="CreateListString" href="../../../../../../../edu/brown/cs/student/main/csv/creators/CreateListString.html#CreateListString">CreateListString</a>() {}
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>    <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_javadoccomment">   * This is a method that will take in a row from the Parser in list form, then iterate over it,</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_javadoccomment">   * concatenate the elements, and return the combined String output in one continuous line.</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_javadoccomment">   *</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_javadoccomment">   * @param row row passed in from the Parser</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_javadoccomment">   * @return a String that represents just the concatenation of the elements of the passed in list</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_javadoccomment">   */</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>    @Override
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>    <strong class="jxr_keyword">public</strong> String create(List&lt;String&gt; row) {
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>      <em class="jxr_comment">// first wrap the inputted list -&gt; array list of strings for flexible access to elements</em>
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>      StringBuilder out =
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>          <strong class="jxr_keyword">new</strong> StringBuilder(); <em class="jxr_comment">// StringBuilder is much more memory efficient than just concatenating</em>
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>      <em class="jxr_comment">// strings</em>
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>      <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; row.size(); i++) {
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>        <strong class="jxr_keyword">if</strong> (i == 0) { <em class="jxr_comment">// each new row (doesn't have extra comma)</em>
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>          out.append(row.get(i));
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>        } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>          out.append(<span class="jxr_string">", "</span>).append(row.get(i)); <em class="jxr_comment">// just append each string to the final output string</em>
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>        }
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>      }
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>      <strong class="jxr_keyword">return</strong> out
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>          .toString(); <em class="jxr_comment">// no try catch here because i'll just assume there's a string input no matter</em>
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>    }
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  }
+</pre>
+<hr/>
+<div id="footer">Copyright &#169; 2023. All rights reserved.</div>
+</body>
+</html>

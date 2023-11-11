@@ -9,13 +9,19 @@ import { REPLInput } from "./REPLInput";
 
 export default function REPL() {
   const [history, setHistory] = useState<string[][][]>([]);
+  const [scrollPosition, setScrollPosition] = useState(0);
 
   // This renders the history as well as current input
   return (
     <div className="repl">
       <REPLHistory history={history} />
       <hr></hr>
-      <REPLInput history={history} setHistory={setHistory} />
+      <REPLInput
+        history={history}
+        setHistory={setHistory}
+        scrollPosition={scrollPosition}
+        setScrollPosition={setScrollPosition}
+      />
     </div>
   );
 }

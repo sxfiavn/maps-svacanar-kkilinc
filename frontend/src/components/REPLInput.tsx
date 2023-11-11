@@ -22,7 +22,6 @@ export function REPLInput(props: REPLInputProps) {
   let [mode, setMode] = useState<boolean>(false);
   let [fileLoaded, setFile] = useState<boolean>(false);
   const geoJSONContext = useContext(GeoJSONContext);
-  let [scrollPosition, setScrollPosition] = useState<number>(0);
 
   // This function is triggered when the button is clicked to handle whatever
   // command is sent.
@@ -258,6 +257,47 @@ export function REPLInput(props: REPLInputProps) {
       });
   };
 
+  // User Story 4
+  // function to handle searching by area in map
+  const SearchArea: REPLFunction = async (args: string[]) => {
+    // No parameters provided
+    if (!args.length) {
+      return [["Error: No parameters provided."]];
+    }
+
+    // query parameters for the fetch request
+    const parameters = args
+      .map(
+        (argument, index) => `param${index + 1}=${encodeURIComponent(argument)}`
+      )
+      .join("&");
+
+    try {
+      // fetch request to the backend server
+      const apiCallResponse = await fetch(
+        `http://localhost:8080/searchArea?${parameters}`
+      );
+
+      // check if the fetch request was successful
+      if (!apiCallResponse.ok) {
+        return [["Error: Search failed"]];
+      }
+
+      // parse the response
+      const jsonResponse = await apiCallResponse.json();
+
+      // check if the response was successful -> return the geoJSON
+      if (jsonResponse.result != "success") {
+        return [["Error: Search failed"]];
+      } else {
+        geoJSONContext?.setGeoJSON(JSON.parse(jsonResponse.geoJson));
+        return [["Search Completed Successfully"]];
+      }
+    } catch (e) {
+      return [["Error: Search failed"]];
+    }
+  };
+
   // A map of the registered commands to their corresponding REPLFunction
   let functions = new Map<string, REPLFunction>();
   functions.set("mode", changeMode);
@@ -267,6 +307,7 @@ export function REPLInput(props: REPLInputProps) {
   functions.set("broadband", broadband);
   functions.set("filter", filter);
   functions.set("map_key", mapKey);
+  functions.set("search_area", SearchArea);
 
   return (
     <div className="repl-input">
