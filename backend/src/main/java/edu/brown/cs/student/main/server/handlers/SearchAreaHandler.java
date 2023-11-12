@@ -1,4 +1,3 @@
-import edu.brown.cs.student.main.server.handlers.SearchAreaHandler;
 package edu.brown.cs.student.main.server.handlers;
 
 import com.squareup.moshi.JsonAdapter;
@@ -33,7 +32,7 @@ public class SearchAreaHandler implements Route {
      * @return JSON-formatted string containing the retrieved data or an error message.
      */
     @Override
-    public Object handler(Request request, Response response) {
+    public Object handle(Request request, Response response) {
   
       // Create a map to store the response data
       Map<String, Object> responseMap = new HashMap<>();
@@ -42,17 +41,17 @@ public class SearchAreaHandler implements Route {
       List<String> parameters = new ArrayList<>();
       request.queryParams().forEach(param -> parameters.add(request.queryParams(param)));
   
-  
-      try {
         Moshi m = new Moshi.Builder().build();
         Type map = Types.newParameterizedType(Map.class, String.class, Object.class);
   
+      try {
+      
         return m.adapter(map).toJson(Map.of(
       "result", "success",
-      "param_list", paramList,
+      "param_list", parameters,
       "geoJson", m.adapter(FeatureCollection.class).toJson(
           new GeoJsonNameSearch(DataStorage.getCurrentJsonData())
-              .searchArea(paramList)
+              .searchArea(parameters)
       )
   ));
   
@@ -60,7 +59,7 @@ public class SearchAreaHandler implements Route {
         responseMap.put("result", "error_datasource");
         responseMap.put("details", "An error occurred while processing GeoJSON data: " + e.getMessage());
         
-        return adapter.toJson(responseMap);
+        return m.adapter(map).toJson(responseMap);
       }
     }
   }

@@ -10,6 +10,7 @@ import edu.brown.cs.student.main.server.handlers.FilterHandler;
 import edu.brown.cs.student.main.server.handlers.LoadCsvHandler;
 import edu.brown.cs.student.main.server.handlers.SearchCsvHandler;
 import edu.brown.cs.student.main.server.handlers.ViewCsvHandler;
+import edu.brown.cs.student.main.server.handlers.SearchAreaHandler;
 import edu.brown.cs.student.main.server.utilities.DataStorage;
 import java.io.IOException;
 import java.util.Scanner;
@@ -54,6 +55,8 @@ public class ServerMain {
     Spark.get("searchcsv", new SearchCsvHandler());
     Spark.get("broadband", new BroadbandHandler(new CensusAPIBroadbandSource(), yesCache));
     Spark.get("filter", new FilterHandler(new JsonDataSource(), yesCache2));
+    Spark.get("searcharea", new SearchAreaHandler());
+
 
     Spark.init();
     Spark.awaitInitialization();
