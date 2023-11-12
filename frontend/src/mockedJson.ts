@@ -55,25 +55,17 @@ export const parsedCSVToFilepathMap = [
   [exampleCSVWithoutHeadersWithHole, "test_without_headers_with_hole"],
 ];
 
-// Commented out returning blank result to be consistent with printing informative message in search function.
-
 export const searchParamsToSearchResultsMap1 = new Map<string[], string[][]>([
   [["0", "Jay"], [["Jay", "21"]]],
   [["0", "Blake"], [["Blake", "20"]]],
-  // [["0", "21"], []],
-  // [["0", "20"], []],
-  // [["1", "Jay"], []],
-  // [["1", "Blake"], []],
+
   [["1", "21"], [["Jay", "21"]]],
   [["1", "20"], [["Blake", "20"]]],
   [["name", "Jay"], [["Jay", "21"]]],
   [["name", "Blake"], [["Blake", "20"]]],
-  // [["name", "20"], [[]]],
-  // [["name", "21"], [[]]],
+
   [["age", "21"], [["Jay", "21"]]],
   [["age", "20"], [["Blake", "20"]]],
-  // [["age", "Jay"], [[]]],
-  // [["age", "Blake"], [[]]],
 ]);
 
 export const searchParamsToSearchResultsMap2 = new Map<string[], string[][]>([
@@ -85,10 +77,6 @@ export const searchParamsToSearchResultsMap2 = new Map<string[], string[][]>([
     ],
   ],
   [["0", "Blake"], [["Blake", ""]]],
-  // [["0", "21"], []],
-  // [["0", "20"], []],
-  // [["1", "Jay"], []],
-  // [["1", "Blake"], []],
   [["1", "21"], [["Jay", "21"]]],
   [["1", "20"], [["Blake", ""]]],
   [["1", "57"], [["Jay", "57"]]],
@@ -100,13 +88,10 @@ export const searchParamsToSearchResultsMap2 = new Map<string[], string[][]>([
     ],
   ],
   [["name", "Blake"], [["Blake", ""]]],
-  // [["name", "20"], [[]]],
-  // [["name", "21"], [[]]],
+
   [["age", "21"], [["Jay", "21"]]],
   [["age", "57"], [["Jay", "57"]]],
   [["age", "20"], [["Blake", ""]]],
-  // [["age", "Jay"], [[]]],
-  // [["age", "Blake"], [[]]],
 ]);
 
 export const filepathToSearchResultsMap = new Map<
