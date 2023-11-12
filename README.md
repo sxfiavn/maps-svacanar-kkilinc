@@ -19,7 +19,8 @@ https://github.com/sxfiavn/maps-svacanar-kkilinc
 
 ### Urban Studies Post Doc Researcher
 
-We catered our application
+We catered our application to the Urban Studies Script by implementing the filter and search_area functionality required for this sprint. In addition to that, we also made sure to keep the broadband functionality from the last sprints, and tested it accordingly. We also added a map_key to the commands, which shows the colors and what they mean. Currently the map is only showing redline data, but the map is there if the researcher wanted to add this extra functionality. We put the map and the command/history window side by side so that the filtered data and/or the broadband data could be seen simultaneously. Lastly, we kept accessibility in mind in terms of colors, layout, effects and screen-reader functionality.
+For further functionality, we suggest adding some functionality to the map where the user can hover over it and see the coordinates and other details of the area they are hovering on. This would be a good way of further supporting the Post Doc Researcher as it could provide even further connections between their research paper and the web interface.
 
 ## File Structure
 
@@ -92,15 +93,15 @@ Overview of testing added for this sprint
 - Random Testing filter
   - Randomly generated coordinates (lat, long)
 - Integration testing:
-  - filter (data found), search_area, mode, load, filter (no data found)
+  - filter (data found), search_area, load, view, mode, filter (no data found)
   - filter, search_area, filter again
   - filter, mode, filter, search_area, mode, search_area
 
 ## Reflection
 
-What we used:
+Breakdown of what technologies we used:
 
-- Hardware: RAM, CPU,
-- Back end: IntelliJ IDEA, Node.js, GeoJSON,
-- Front end: VS Code, React,
-- Fullstack: Playwright, Github, Git, Typescript, npm,
+- Hardware: RAM, CPU, GPU (on M1)
+- Back end: IntelliJ IDEA, Node.js, GeoJSON, GCS API, Maven
+- Front end: VS Code, React
+- Fullstack: Playwright, Github, Git, Typescript, npm

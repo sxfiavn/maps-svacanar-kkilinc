@@ -13,7 +13,7 @@ test("Test Filter", async ({ page }) => {
     .fill("filter -71.410972 -71.410972 41.859843 41.859843");
   await page.waitForSelector('role=button[name="Submit"]');
   await page.getByRole("button", { name: "Submit" }).click();
-  await expect(page.getByText("Providence")).toBeVisible();
+  await expect(page.getByText("Pawtucket & Central Falls")).toBeVisible();
 
   // No data found
   await page.getByLabel("Command input").click();
@@ -92,7 +92,7 @@ test("Integration Testing Filter and Search Area", async ({ page }) => {
     .getByLabel("Command input")
     .fill("filter -71.410972 -71.410972 41.859843 41.859843");
   await page.getByRole("button", { name: "Submit" }).click();
-  await expect(page.getByText("Providence")).toBeVisible();
+  await expect(page.getByText("Pawtucket & Central Falls")).toBeVisible();
 
   // Search area
   await page.getByLabel("Command input").click();
@@ -113,6 +113,14 @@ test("Integration Testing Filter and Search Area", async ({ page }) => {
   await page
     .getByLabel("Command input")
     .fill("load_file backend/data/empty_csv.csv");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByText("success")).toBeVisible();
+
+  // View file
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("view");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByText("Empty File")).toBeVisible();
 
   // Change mode again (to brief)
   await page.getByLabel("Command input").click();
