@@ -13,13 +13,15 @@ import org.jetbrains.annotations.NotNull;
 
 public class JsonDataSource implements GeoJsonDataSource {
 
-  private boolean isInBoundingBox(List<Double> coordinate, double lowerX, double lowerY, double upperX, double upperY) {
+  private boolean isInBoundingBox(
+      List<Double> coordinate, double lowerX, double lowerY, double upperX, double upperY) {
     double x = coordinate.get(0);
     double y = coordinate.get(1);
     return x >= lowerX && x <= upperX && y >= lowerY && y <= upperY;
   }
 
-  public JsonData searchFeaturesInBoundingBox(double lowerX, double lowerY, double upperX, double upperY) {
+  public JsonData searchFeaturesInBoundingBox(
+      double lowerX, double lowerY, double upperX, double upperY) {
     FeatureCollection featureCollection = DataStorage.getCurrentJsonData();
     ArrayList<ArrayList<String>> featuresInfo = new ArrayList<>();
     ArrayList<String> headers = new ArrayList<>();
@@ -56,7 +58,6 @@ public class JsonDataSource implements GeoJsonDataSource {
     LocalDateTime now = LocalDateTime.now();
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     String formattedDateTime = now.format(formatter);
-
 
     return new JsonData(featuresInfo, null, formattedDateTime);
   }

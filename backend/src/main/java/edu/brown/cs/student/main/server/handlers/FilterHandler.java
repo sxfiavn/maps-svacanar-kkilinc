@@ -7,13 +7,12 @@ import edu.brown.cs.student.main.server.datasource.redline_caching.CachedJsonDat
 import edu.brown.cs.student.main.server.datasource.redline_no_caching.GeoJsonDataSource;
 import edu.brown.cs.student.main.server.datasource.redline_no_caching.JsonData;
 import edu.brown.cs.student.main.server.utilities.DataStorage;
-import spark.Request;
-import spark.Response;
-import spark.Route;
-
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
+import spark.Request;
+import spark.Response;
+import spark.Route;
 
 /**
  * A handler for view red line data. The handler processes the request and returns a JSON-formatted
@@ -30,7 +29,7 @@ public class FilterHandler implements Route {
   /**
    * Handles the incoming request to retrieve the red line data.
    *
-   * @param request  The incoming request.
+   * @param request The incoming request.
    * @param response The outgoing response.
    * @return JSON-formatted string containing the retrieved data/an error message.
    */
@@ -75,7 +74,8 @@ public class FilterHandler implements Route {
       System.err.println("Error: Not a valid integer. Bounding box must be integers.");
     } catch (Exception e) {
       filterResponseMap.put("result", "error_datasource");
-      filterResponseMap.put("details", "There was an error with the bounding box, please try again.");
+      filterResponseMap.put(
+          "details", "There was an error with the bounding box, please try again.");
       return adapter.toJson(filterResponseMap);
     }
 

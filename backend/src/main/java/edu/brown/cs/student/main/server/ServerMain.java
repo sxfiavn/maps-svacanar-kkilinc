@@ -6,8 +6,8 @@ import edu.brown.cs.student.main.geoJsonParser.JsonParser;
 import edu.brown.cs.student.main.server.datasource.broadband_no_caching.CensusAPIBroadbandSource;
 import edu.brown.cs.student.main.server.datasource.redline_no_caching.JsonDataSource;
 import edu.brown.cs.student.main.server.handlers.BroadbandHandler;
-import edu.brown.cs.student.main.server.handlers.LoadCsvHandler;
 import edu.brown.cs.student.main.server.handlers.FilterHandler;
+import edu.brown.cs.student.main.server.handlers.LoadCsvHandler;
 import edu.brown.cs.student.main.server.handlers.SearchCsvHandler;
 import edu.brown.cs.student.main.server.handlers.ViewCsvHandler;
 import edu.brown.cs.student.main.server.utilities.DataStorage;
@@ -30,7 +30,7 @@ public class ServerMain {
     // Store this mapping of names -> codes, so you don't have to query for it ever again!
     DataStorage.setStateNamesToCodes(DataStorage.apiStateNamesToCodes());
     JsonParser jsonParser = new JsonParser();
-    DataStorage.setCurrentJsonData(jsonParser.parse("data/fullDownload.json"));
+    DataStorage.setCurrentJsonData(jsonParser.parse("/Users/sofiavacanarvaja/Desktop/CS32/maps-svacanar-kkilinc/backend/data/fullDownload.json"));
 
     // Query parameters for caching
     Scanner myObj = new Scanner(System.in);
@@ -54,7 +54,6 @@ public class ServerMain {
     Spark.get("searchcsv", new SearchCsvHandler());
     Spark.get("broadband", new BroadbandHandler(new CensusAPIBroadbandSource(), yesCache));
     Spark.get("filter", new FilterHandler(new JsonDataSource(), yesCache2));
-    Spark.get("searchArea", new SearchAreaHandler());
 
     Spark.init();
     Spark.awaitInitialization();

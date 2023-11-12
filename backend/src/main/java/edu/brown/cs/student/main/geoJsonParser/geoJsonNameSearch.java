@@ -33,12 +33,10 @@ public class geoJsonNameSearch {
     return matchedFeatures;
   }
 
-
   private boolean featureMatchesParams(Properties properties, List<String> paramList) {
     // Convert all parameters to lowercase for case-insensitive matching
-    List<String> lowerCaseParams = paramList.stream()
-                                            .map(String::toLowerCase)
-                                            .collect(Collectors.toList());
+    List<String> lowerCaseParams =
+        paramList.stream().map(String::toLowerCase).collect(Collectors.toList());
 
     if (properties.state != null && containsIgnoreCase(properties.state, lowerCaseParams)) {
       return true;
@@ -52,7 +50,7 @@ public class geoJsonNameSearch {
     if (properties.area_description_data != null) {
       // Using streams to check for any match in the description data
       return properties.area_description_data.values().stream()
-        .anyMatch(description -> containsIgnoreCase(description, lowerCaseParams));
+          .anyMatch(description -> containsIgnoreCase(description, lowerCaseParams));
     }
     // If none of the properties match, return false.
     return false;

@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: edu.brown.cs.student.main.datasource.TestBroadbandHandlerReal
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.004 s <<< FAILURE! - in edu.brown.cs.student.main.datasource.TestBroadbandHandlerReal
-edu.brown.cs.student.main.datasource.TestBroadbandHandlerReal  Time elapsed: 0.004 s  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in edu.brown.cs.student.main.datasource.TestBroadbandHandlerReal
+edu.brown.cs.student.main.datasource.TestBroadbandHandlerReal  Time elapsed: 0.001 s  <<< ERROR!
 java.lang.IllegalStateException: This must be done before route mapping has begun
 	at spark.Service.throwBeforeRouteMappingException(Service.java:504)
 	at spark.Service.port(Service.java:169)

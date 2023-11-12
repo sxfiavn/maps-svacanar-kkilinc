@@ -38,5 +38,4 @@ public class Properties {
   public int getNeighborhoodId() {
     return this.neighborhood_id;
   }
-
 }

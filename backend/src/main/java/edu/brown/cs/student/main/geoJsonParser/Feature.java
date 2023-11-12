@@ -10,7 +10,7 @@ public class Feature {
     return this.geometry;
   }
 
-  public Properties getProperties(){
+  public Properties getProperties() {
     return this.properties;
   }
 }

@@ -103,7 +103,7 @@ public class BroadbandHandler implements Route {
       responseMap.put("county name query", countyName);
       return adapter.toJson(responseMap);
     } catch (Exception e) {
-      //checks
+      // checks
 
     }
     responseMap.put("result", "error_bad_request");

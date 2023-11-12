@@ -1,9 +1,9 @@
 package edu.brown.cs.student.main.server.datasource.redline_no_caching;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public record JsonData(ArrayList<ArrayList<String>> data, String errorMessage, String retrievalTime) {
+public record JsonData(
+    ArrayList<ArrayList<String>> data, String errorMessage, String retrievalTime) {
 
   /**
    * Factory method of BroadbandData for error scenarios.
@@ -12,7 +12,7 @@ public record JsonData(ArrayList<ArrayList<String>> data, String errorMessage, S
    * @return A JsonData instance with the error message and null for all other fields.
    */
   public static JsonData forErrorMessage(String errorMessage, String time) {
-    return new JsonData(null,  errorMessage, time);
+    return new JsonData(null, errorMessage, time);
   }
 
   /**
@@ -24,8 +24,7 @@ public record JsonData(ArrayList<ArrayList<String>> data, String errorMessage, S
    */
   public static JsonData fromData(ArrayList<ArrayList<String>> jsonDataValue, String time) {
     if (jsonDataValue != null && jsonDataValue.size() >= 2) {
-      return new JsonData(
-          jsonDataValue, null, time);
+      return new JsonData(jsonDataValue, null, time);
     }
     return JsonData.forErrorMessage("No data returned from API", time);
   }

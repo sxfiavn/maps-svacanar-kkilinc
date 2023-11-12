@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: edu.brown.cs.student.main.datasource.TestViewHandler
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in edu.brown.cs.student.main.datasource.TestViewHandler
-edu.brown.cs.student.main.datasource.TestViewHandler  Time elapsed: 0.001 s  <<< ERROR!
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.002 s <<< FAILURE! - in edu.brown.cs.student.main.datasource.TestViewHandler
+edu.brown.cs.student.main.datasource.TestViewHandler  Time elapsed: 0.002 s  <<< ERROR!
 java.lang.IllegalStateException: This must be done before route mapping has begun
 	at spark.Service.throwBeforeRouteMappingException(Service.java:504)
 	at spark.Service.port(Service.java:169)
