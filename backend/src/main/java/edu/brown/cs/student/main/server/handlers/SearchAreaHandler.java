@@ -4,7 +4,7 @@ import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 import com.squareup.moshi.Types;
 import edu.brown.cs.student.main.geoJsonParser.FeatureCollection;
-import edu.brown.cs.student.main.geoJsonParser.GeoJsonNameSearch;
+import edu.brown.cs.student.main.geoJsonParser.geoJsonNameSearch;
 import edu.brown.cs.student.main.server.utilities.DataStorage;
 import spark.Request;
 import spark.Response;
@@ -50,7 +50,7 @@ public class SearchAreaHandler implements Route {
       "result", "success",
       "param_list", parameters,
       "geoJson", m.adapter(FeatureCollection.class).toJson(
-          new GeoJsonNameSearch(DataStorage.getCurrentJsonData())
+          new geoJsonNameSearch(DataStorage.getCurrentJsonData())
               .searchArea(parameters)
       )
   ));

@@ -55,7 +55,7 @@ public class ServerMain {
     Spark.get("searchcsv", new SearchCsvHandler());
     Spark.get("broadband", new BroadbandHandler(new CensusAPIBroadbandSource(), yesCache));
     Spark.get("filter", new FilterHandler(new JsonDataSource(), yesCache2));
-    Spark.get("searcharea", new SearchAreaHandler());
+    Spark.get("searchArea", new SearchAreaHandler());
 
 
     Spark.init();

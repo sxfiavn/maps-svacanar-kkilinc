@@ -84,6 +84,7 @@ test("Integration Testing Filter and Search Area", async ({ page }) => {
   await page.getByLabel("Command input").click();
   await page.getByLabel("Command input").fill("search_area Providence");
   await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByText("Search Completed Successfully")).toBeVisible();
 
   // Change mode (to verbose)
   await page.getByLabel("Command input").click();

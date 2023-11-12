@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f4ced4cc-5536-4316-a561-8bd890e37628" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/server/ServerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/edu/brown/cs/student/main/server/ServerMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/csv/FactoryFailureException 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/csv/Main 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/csv/creators/CreateBoolean 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/csv/creators/CreateListString 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/csv/creators/CreateStar 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/csv/parser/CsvParser 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/csv/parser/Parser 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/geoJsonParser/Feature 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/geoJsonParser/FeatureCollection 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/geoJsonParser/Geometry 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/geoJsonParser/JsonParser 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/server/ServerMain 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/server/ServerMain.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/server/ServerMain.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/server/datasource/broadband_caching/CachedBroadbandDataSource$1 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/server/datasource/broadband_no_caching/BroadbandData 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/server/datasource/broadband_no_caching/BroadbandDataSource 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/server/datasource/broadband_no_caching/CensusAPIBroadbandSource 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/server/datasource/redline_caching/CachedJsonDataSource 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/server/datasource/redline_caching/CachedJsonDataSource$1 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/server/datasource/redline_no_caching/GeoJsonDataSource 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/server/datasource/redline_no_caching/JsonData 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/server/datasource/redline_no_caching/JsonDataSource 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/server/datasource/redline_no_caching/JsonDataSource.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/server/datasource/redline_no_caching/JsonDataSource.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/server/handlers/BroadbandHandler 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/server/handlers/FilterHandler 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/server/handlers/LoadCsvHandler 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/server/handlers/ViewCsvHandler 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/server/utilities/DataStorage 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/edu/brown/cs/student/main/server/utilities/MoshiUtils 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/brown/cs/student/main/datasource/TestBroadbandDataSourceReal 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/brown/cs/student/main/datasource/TestBroadbandHandlerMock 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/brown/cs/student/main/datasource/TestBroadbandHandlerReal 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/brown/cs/student/main/datasource/TestDataStorage 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/brown/cs/student/main/datasource/TestLoadHandler 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/brown/cs/student/main/datasource/TestSearchHandler 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/brown/cs/student/main/datasource/TestViewHandler 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/edu/brown/cs/student/main/datasource/mocks/MockedCensusAPIBroadbandSource 2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/_metadata 2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/_metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/_metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/chunk-CIQVVTPY 2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/chunk-CIQVVTPY.js 2.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/chunk-DFKQJ226 2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/chunk-DFKQJ226.js 2.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/chunk-ZOIWZPCO 2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/chunk-ZOIWZPCO.js 2.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/mapbox-gl 2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/mapbox-gl.js 2.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/package 2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/react 2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/react-dom_client 2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/react-dom_client.js 2.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/react-map-gl 2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/react-map-gl.js 2.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/react.js 2.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/react_jsx-dev-runtime 2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/react_jsx-dev-runtime.js 2.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/react_jsx-runtime 2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../frontend/node_modules/.vite/deps/react_jsx-runtime.js 2.map" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2XpkXy6xxDLOYiB2he0YUOioqGl" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "us-3",
+    "last_opened_file_path": "/Users/sofiavacanarvaja/Desktop/CS32/maps-svacanar-kkilinc/backend",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f4ced4cc-5536-4316-a561-8bd890e37628" name="Changes" comment="" />
+      <created>1699333451487</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699333451487</updated>
+      <workItem from="1699333452898" duration="165000" />
+      <workItem from="1699650780891" duration="38000" />
+      <workItem from="1699650862234" duration="86000" />
+      <workItem from="1699650962742" duration="48000" />
+      <workItem from="1699651032964" duration="37000" />
+      <workItem from="1699668929141" duration="145000" />
+      <workItem from="1699743783076" duration="35000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
