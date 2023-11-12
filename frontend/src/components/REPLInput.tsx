@@ -92,7 +92,7 @@ export function REPLInput(props: REPLInputProps) {
     if (command.length == 1) {
       return [["Error: No parameters provided."]];
     } else if (command.length < 5) {
-      return [["Error: No bounding box given."]];
+      return [["Error: Too few arguments given."]];
     } else if (command.length > 5) {
       return [["Error: Too many arguments given."]];
     } else {
@@ -198,7 +198,7 @@ export function REPLInput(props: REPLInputProps) {
           if (r["result"] == "success") {
             console.log(r["data"].length);
             if (r["data"].length === 0) {
-              return [["File is empty!"]];
+              return [["Empty File"]];
             }
             return r["data"];
           }
@@ -253,9 +253,9 @@ export function REPLInput(props: REPLInputProps) {
         if (r["result"] == "success") {
           setFile(true);
         } else if (r["result"] == "error_datasource") {
-          return [["This is not a valid filepath!"]];
+          return [["Error: Invalid filepath"]];
         } else if (r["result"] == "error_bad_request") {
-          return [["Please enter a filepath!"]];
+          return [["Error: Enter filepath"]];
         }
         return [[r["result"]]];
       });

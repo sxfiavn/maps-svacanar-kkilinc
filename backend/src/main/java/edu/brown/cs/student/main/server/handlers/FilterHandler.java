@@ -50,10 +50,10 @@ public class FilterHandler implements Route {
     String upperY = request.queryParams("upperY");
 
     try {
-      int lx = Integer.parseInt(lowerX);
-      int ux = Integer.parseInt(upperX);
-      int ly = Integer.parseInt(lowerY);
-      int uy = Integer.parseInt(upperY);
+      Double lx = Double.parseDouble(lowerX);
+      Double ux = Double.parseDouble(upperX);
+      Double ly = Double.parseDouble(lowerY);
+      Double uy = Double.parseDouble(upperY);
 
       JsonData featuresInBox = this.state.searchFeaturesInBoundingBox(lx, ly, ux, uy);
 

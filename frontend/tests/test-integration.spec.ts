@@ -17,32 +17,48 @@ test("Test Filter", async ({ page }) => {
 
   // No data found
   await page.getByLabel("Command input").click();
-  await page
-    .getByLabel("Command input")
-    .fill("filter -40 -40 41.859843 41.859843");
-  await page.waitForSelector('role=button[name="Submit"]');
+  await page.getByLabel("Command input").fill("filter 0 0 -10 -10");
   await page.getByRole("button", { name: "Submit" }).click();
   await expect(page.getByText("No data fits the given bounds.")).toBeVisible();
 
   // Not enough params
   await page.getByLabel("Command input").click();
   await page.getByLabel("Command input").fill("filter 3 3 ");
-  await page.waitForSelector('role=button[name="Submit"]');
   await page.getByRole("button", { name: "Submit" }).click();
-  expect(page.getByText("Error: No parameters provided.")).toBeVisible();
+  expect(page.getByText("Error: Too few arguments given.")).toBeVisible();
 
   // Too many enough params
   await page.getByLabel("Command input").click();
   await page.getByLabel("Command input").fill("filter 3 3 3 3 3");
-  await page.waitForSelector('role=button[name="Submit"]');
   await page.getByRole("button", { name: "Submit" }).click();
   expect(page.getByText("Error: Too many arguments given.")).toBeVisible();
 
   // No params
   await page.getByLabel("Command input").fill("filter");
-  await page.waitForSelector('role=button[name="Submit"]');
+  await page.getByLabel("Command input").fill("filter");
   await page.getByRole("button", { name: "Submit" }).click();
-  expect(page.getByText("No bounding box given.")).toBeVisible();
+  expect(page.getByText("Error: No parameters provided.")).toBeVisible();
+
+  // Invalid params
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("filter a a a a");
+  await page.getByRole("button", { name: "Submit" }).click();
+  expect(page.getByText("Error: Couldn't fetch the data.")).toBeVisible();
+});
+
+// "Unit Testing" search area query
+test("Test Search Area", async ({ page }) => {
+  // Successful call
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("search_area Providence");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByText("Search Completed Successfully")).toBeVisible();
+
+  // No parameters
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("search_area");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByText("Error: No parameters provided.")).toBeVisible();
 });
 
 // Random Testing Filter
@@ -62,7 +78,6 @@ test("Random Testing Filter", async ({ page }) => {
   // Test random numbers
   await page.getByLabel("Command input").click();
   await page.getByLabel("Command input").fill("randomNumsString");
-  await page.waitForSelector('role=button[name="Submit"]');
   await page.getByRole("button", { name: "Submit" }).click();
 
   // Check if data found (probably not found tho)
@@ -76,7 +91,6 @@ test("Integration Testing Filter and Search Area", async ({ page }) => {
   await page
     .getByLabel("Command input")
     .fill("filter -71.410972 -71.410972 41.859843 41.859843");
-  await page.waitForSelector('role=button[name="Submit"]');
   await page.getByRole("button", { name: "Submit" }).click();
   await expect(page.getByText("Providence")).toBeVisible();
 
@@ -94,6 +108,12 @@ test("Integration Testing Filter and Search Area", async ({ page }) => {
     page.getByText("Application has been set to verbose mode")
   ).toBeVisible();
 
+  // Load file
+  await page.getByLabel("Command input").click();
+  await page
+    .getByLabel("Command input")
+    .fill("load_file backend/data/empty_csv.csv");
+
   // Change mode again (to brief)
   await page.getByLabel("Command input").click();
   await page.getByLabel("Command input").fill("mode");
@@ -102,17 +122,80 @@ test("Integration Testing Filter and Search Area", async ({ page }) => {
     page.getByText("Application has been set to brief mode")
   ).toBeVisible();
 
-  // Load file
-  await page.getByLabel("Command input").click();
-  await page
-    .getByLabel("Command input")
-    .fill("load_file backend/data/empty_csv.csv");
-
   // Filter again - No data found
   await page.getByLabel("Command input").click();
   await page.getByLabel("Command input").fill("filter 0 0 0 0");
   await page.getByRole("button", { name: "Submit" }).click();
   await expect(page.getByText("No data fits the given bounds.")).toBeVisible();
+});
+
+// Integration testing with filter and search area
+test("Filter, Search Area, Filter", async ({ page }) => {
+  // Filter 1 (Providence)
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("filter 0000");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByText("Error: Too Few Parameters ")).toBeVisible();
+
+  // Search area (Providence)
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("search_area Providence");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByText("Search Completed Successfully")).toBeVisible();
+
+  // Filter 2 (Providence)
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("filter 0000");
+  await page.getByRole("button", { name: "Submit" }).click();
+});
+
+//filter, mode, filter, search_area, mode, search_area;
+test("Filter, Mode, Filter, Search Area, Mode, Search Area", async ({
+  page,
+}) => {
+  // Filter (too many parameters)
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("filter 0 0 0 0 0");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(
+    page.getByText("Error: Too many arguments given.")
+  ).toBeVisible();
+
+  // Mode (to verbose)
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("mode");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(
+    page.getByText("Application has been set to verbose mode")
+  ).toBeVisible();
+
+  // Filter (no data)
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("filter 0 0 0 0");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByText("No data fits the given bounds.")).toBeVisible();
+  await expect(page.getByText("Command: filter")).toBeVisible(); // From verbose mode
+
+  // Search Area (successful)
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("search_area Bronx");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByText("Search Completed Successfully")).toBeVisible();
+  await expect(page.getByText("Command: search_area")).toBeVisible(); // From verbose mode
+
+  // Mode (to brief)
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("mode");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(
+    page.getByText("Application has been set to brief mode")
+  ).toBeVisible();
+
+  // Search Area (no parameters)
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("search_area");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByText("Error: No parameters provided.")).toBeVisible();
 });
 
 /////////////////////

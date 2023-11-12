@@ -1,0 +1,29 @@
+.App {
+  text-align: center;
+  overflow-y: auto;
+  height: 100vh;
+  background-color: rgb(67, 88, 67);
+}
+.App-header {
+  background-color: #282c34;
+  min-height: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(1px + 2vmin);
+  color: white;
+}
+
+.map-repl {
+  background-color: rgb(67, 88, 67);
+  display: flex;
+  height: 90vh;
+  width: 100%;
+}
+
+.map-repl > * {
+  flex: 1;
+  height: 100%;
+  overflow: auto;
+}

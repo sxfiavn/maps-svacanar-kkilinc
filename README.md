@@ -17,6 +17,10 @@ https://github.com/sxfiavn/maps-svacanar-kkilinc
 - Mason Lee (starter code + caching implementation)
 - CS32 Staff (Maps Gearup)
 
+### Urban Studies Post Doc Researcher
+
+We catered our application
+
 ## File Structure
 
 1. index.tsx: Main entry point of the application.
@@ -61,6 +65,7 @@ https://github.com/sxfiavn/maps-svacanar-kkilinc
 ### Frontend
 
 - In terminal run "npm run dev" to open web application.
+- Insert commands in command box
 
 ### Backend
 
@@ -70,11 +75,30 @@ https://github.com/sxfiavn/maps-svacanar-kkilinc
 ### Testing
 
 - Testing of previous Sprints are included
+
+## Testing Breakdown
+
+Overview of testing added for this sprint
+
+- Unit testing filter
+  - Not enough parameters
+  - Too many parameters
+  - Invalid parameters
+  - No data found
+  - Data found (expected successful response)
+- Unit testing search_area
+  - Message of successful call
+  - Not enough parameters
+- Random Testing filter
+  - Randomly generated coordinates (lat, long)
 - Integration testing:
+  - filter (data found), search_area, mode, load, filter (no data found)
+  - filter, search_area, filter again
+  - filter, mode, filter, search_area, mode, search_area
 
 ## Reflection
 
-What we used: \n
+What we used:
 
 - Hardware: RAM, CPU,
 - Back end: IntelliJ IDEA, Node.js, GeoJSON,
