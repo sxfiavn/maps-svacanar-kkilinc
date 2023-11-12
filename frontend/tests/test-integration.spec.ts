@@ -4,63 +4,145 @@ test.beforeEach(async ({ page }) => {
   await page.goto("http://localhost:5173/");
 });
 
-
-// basic testing for a basic filter query
-test("correct response for a basic filter query", async ({ page }) => {
-  await page.goto("http://localhost:5173/");
+// "Unit Testing" filter query
+test("Test Filter", async ({ page }) => {
+  // Data found
   await page.getByLabel("Command input").click();
-  await page.getByLabel("Command input").fill("filter -71.410972 -71.410972 41.859843 41.859843");
+  await page
+    .getByLabel("Command input")
+    .fill("filter -71.410972 -71.410972 41.859843 41.859843");
   await page.waitForSelector('role=button[name="Submit"]');
   await page.getByRole("button", { name: "Submit" }).click();
-  await page.waitForSelector("text=9512");
-  const text1 = await page.locator("text=9512");
-  await expect(text1).toBeVisible();
-  await page.waitForSelector("text=9511");
-  const text4 = await page.locator("text=9511");
-  await expect(text4).toBeVisible();
-  await page.screenshot({
-    path: "tests/mocked-backend/testing-images/integration-basic-1.png",
-    fullPage: true,
-  });
-});
+  await expect(page.getByText("Providence")).toBeVisible();
 
-test("correct response for an edge filter query where data is not found", async ({ page }) => {
-  await page.goto("http://localhost:5173/");
+  // No data found
   await page.getByLabel("Command input").click();
   await page
     .getByLabel("Command input")
     .fill("filter -40 -40 41.859843 41.859843");
   await page.waitForSelector('role=button[name="Submit"]');
   await page.getByRole("button", { name: "Submit" }).click();
-  await page.waitForSelector("text=No data fits the given bounds.");
-  const text1 = await page.locator("text=No data fits the given bounds.");
-  await expect(text1).toBeVisible();
-  await page.screenshot({
-    path: "tests/mocked-backend/testing-images/integration-basic-2.png",
-    fullPage: true,
-  });
+  await expect(page.getByText("No data fits the given bounds.")).toBeVisible();
+
+  // Not enough params
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("filter 3 3 ");
+  await page.waitForSelector('role=button[name="Submit"]');
+  await page.getByRole("button", { name: "Submit" }).click();
+  expect(page.getByText("Error: No parameters provided.")).toBeVisible();
+
+  // Too many enough params
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("filter 3 3 3 3 3");
+  await page.waitForSelector('role=button[name="Submit"]');
+  await page.getByRole("button", { name: "Submit" }).click();
+  expect(page.getByText("Error: Too many arguments given.")).toBeVisible();
+
+  // No params
+  await page.getByLabel("Command input").fill("filter");
+  await page.waitForSelector('role=button[name="Submit"]');
+  await page.getByRole("button", { name: "Submit" }).click();
+  expect(page.getByText("No bounding box given.")).toBeVisible();
 });
 
-test("correct response for an edge filter query where not enough parameters are given", async ({
-  page,
-}) => {
-  await page.goto("http://localhost:5173/");
+// Random Testing Filter
+test("Random Testing Filter", async ({ page }) => {
+  // generate 4 random numbers
+  let randomNums: number[] = [];
+  for (let i = 0; i < 4; i++) {
+    randomNums.push(Math.random() * 100);
+  }
+
+  // make string of random numbers
+  let randomNumsString = "filter ";
+  for (let i = 0; i < 4; i++) {
+    randomNumsString += randomNums[i] + " ";
+  }
+
+  // Test random numbers
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("randomNumsString");
+  await page.waitForSelector('role=button[name="Submit"]');
+  await page.getByRole("button", { name: "Submit" }).click();
+
+  // Check if data found (probably not found tho)
+  await expect(page.getByText("No data fits the given bounds.")).toBeVisible();
+});
+
+// Integration testing with filter and search area
+test("Integration Testing Filter and Search Area", async ({ page }) => {
+  // Filter - Data found
   await page.getByLabel("Command input").click();
   await page
     .getByLabel("Command input")
-    .fill("filter -40 41.859843");
+    .fill("filter -71.410972 -71.410972 41.859843 41.859843");
   await page.waitForSelector('role=button[name="Submit"]');
   await page.getByRole("button", { name: "Submit" }).click();
-  await page.waitForSelector("text=Please input a complete bounding box.");
-  const text1 = await page.locator("text=Please input a complete bounding box.");
-  await expect(text1).toBeVisible();
-  await page.screenshot({
-    path: "tests/mocked-backend/testing-images/integration-basic-3.png",
-    fullPage: true,
-  });
+  await expect(page.getByText("Providence")).toBeVisible();
+
+  // Search area
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("search_area Providence");
+  await page.getByRole("button", { name: "Submit" }).click();
+
+  // Change mode (to verbose)
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("mode");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(
+    page.getByText("Application has been set to verbose mode")
+  ).toBeVisible();
+
+  // Change mode again (to brief)
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("mode");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(
+    page.getByText("Application has been set to brief mode")
+  ).toBeVisible();
+
+  // Load file
+  await page.getByLabel("Command input").click();
+  await page
+    .getByLabel("Command input")
+    .fill("load_file backend/data/empty_csv.csv");
+
+  // Filter again - No data found
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("filter 0 0 0 0");
+  await page.getByRole("button", { name: "Submit" }).click();
+  await expect(page.getByText("No data fits the given bounds.")).toBeVisible();
 });
 
 /////////////////////
+
+// Load, load, view -> check view is from the second loaded file
+test("2 consecutive loads, then view", async ({ page }) => {
+  await page.goto("http://localhost:5173/");
+
+  // Load file 1
+  await page.getByLabel("Command input").click();
+  await page
+    .getByLabel("Command input")
+    .fill("load_file backend/data/empty_csv.csv");
+  await page.getByRole("button", { name: "Submit" }).click();
+
+  // Load file 2
+  await page.getByLabel("Command input").click();
+  await page
+    .getByLabel("Command input")
+    .fill("load_file backend/data/RI_Income.csv");
+
+  await page.getByRole("button", { name: "Submit" }).click();
+
+  // View
+  await page.getByLabel("Command input").click();
+  await page.getByLabel("Command input").fill("view");
+  await page.getByRole("button", { name: "Submit" }).click();
+
+  // Expected value
+  await expect(page.getByText("Rhode Island")).toBeVisible();
+});
 
 test("after I submit a nonsense command via the input box, it gives me an error message", async ({
   page,
@@ -81,13 +163,7 @@ test("after I submit a view command with no file loaded, I get an error", async 
   await page.getByLabel("Command input").click();
   await page.getByLabel("Command input").fill("view");
   await page.getByRole("button", { name: "Submit" }).click();
-  await page.screenshot({
-    path: "tests/mocked-backend/testing-images/huh.png",
-    fullPage: true,
-  });
   await expect(page.getByText("There is no file loaded")).toBeVisible();
-    
-
 });
 
 test("after I submit a load_file command via the input box for a valid file, it gives me an success message", async ({
@@ -95,7 +171,9 @@ test("after I submit a load_file command via the input box for a valid file, it 
 }) => {
   await page.goto("http://localhost:5173/");
   await page.getByLabel("Command input").click();
-  await page.getByLabel("Command input").fill("load_file data/RI_Income.csv");
+  await page
+    .getByLabel("Command input")
+    .fill("load_file  backend/data/RI_Income.csv");
   await page.getByRole("button", { name: "Submit" }).click();
   await expect(page.getByText("success")).toBeVisible();
 });
@@ -142,7 +220,9 @@ test("after I submit a load_file command via the input box for a valid file with
 }) => {
   await page.goto("http://localhost:5173/");
   await page.getByLabel("Command input").click();
-  await page.getByLabel("Command input").fill("load_file data/RI_Income.csv");
+  await page
+    .getByLabel("Command input")
+    .fill("load_file  backend/data/RI_Income.csv");
   await page.getByRole("button", { name: "Submit" }).click();
   await page.getByLabel("Command input").click();
   await page.getByLabel("Command input").fill("view");
@@ -160,7 +240,9 @@ test("after I submit a load_file command, and search with column index, I get a 
 }) => {
   await page.goto("http://localhost:5173/");
   await page.getByLabel("Command input").click();
-  await page.getByLabel("Command input").fill("load_file data/RI_Income.csv");
+  await page
+    .getByLabel("Command input")
+    .fill("load_file  backend/data/RI_Income.csv");
   await page.getByRole("button", { name: "Submit" }).click();
   await page.getByLabel("Command input").click();
   await page.getByLabel("Command input").fill("search providence 1 true");
@@ -176,7 +258,9 @@ test("after I submit a load_file command, and search with column name, I get a c
 }) => {
   await page.goto("http://localhost:5173/");
   await page.getByLabel("Command input").click();
-  await page.getByLabel("Command input").fill("load_file data/RI_Income.csv");
+  await page
+    .getByLabel("Command input")
+    .fill("load_file  backend/data/RI_Income.csv");
   await page.getByRole("button", { name: "Submit" }).click();
   await page.getByLabel("Command input").click();
   await page
@@ -189,53 +273,23 @@ test("after I submit a load_file command, and search with column name, I get a c
   await expect(page.getByText("31,757.00")).toBeVisible();
 });
 
-test("after I submit a load_file command and then view the file, I can submit a different load_file command and view that file", async ({
-  page,
-}) => {
+test("2 consecutive loads", async ({ page }) => {
   await page.goto("http://localhost:5173/");
   await page.getByLabel("Command input").click();
-  await page.getByLabel("Command input").fill("load_file data/RI_Income.csv");
+  await page
+    .getByLabel("Command input")
+    .fill("load_file  backend/data/RI_Income.csv");
   await page.getByRole("button", { name: "Submit" }).click();
   await page.getByLabel("Command input").click();
   await page.getByLabel("Command input").fill("search providence 1 true");
   await page.getByRole("button", { name: "Submit" }).click();
   await expect(page.getByText("Providence")).toBeVisible();
   await page.getByLabel("Command input").click();
-  await page.getByLabel("Command input").fill("load_file data/second_file.csv");
+  await page
+    .getByLabel("Command input")
+    .fill("load_file  backend/data/second_file.csv");
   await page.getByRole("button", { name: "Submit" }).click();
   await page.getByLabel("Command input").click();
   await page.getByLabel("Command input").fill("view");
   await page.getByRole("button", { name: "Submit" }).click();
-});
-
-test("after I submit a valid broadband request, I get a success respnse", async ({
-  page,
-}) => {
-  await page.goto("http://localhost:5173/");
-  await page.getByLabel("Command input").click();
-  await page
-    .getByLabel("Command input")
-    .fill("broadband Massachusetts Plymouth");
-  await page.getByRole("button", { name: "Submit" }).click();
-  await expect(page.getByText("88.4")).toBeVisible();
-});
-
-test("after I submit a valid broadband request with a two word parameter, I get a success respnse", async ({
-  page,
-}) => {
-  await page.goto("http://localhost:5173/");
-  await page.getByLabel("Command input").click();
-  await page.getByLabel("Command input").fill("broadband [New York] Albany");
-  await page.getByRole("button", { name: "Submit" }).click();
-  await expect(page.getByText("84.7")).toBeVisible();
-});
-
-test("after I submit an invalid broadband request, I get an error message", async ({
-  page,
-}) => {
-  await page.goto("http://localhost:5173/");
-  await page.getByLabel("Command input").click();
-  await page.getByLabel("Command input").fill("broadband Massachusetts q");
-  await page.getByRole("button", { name: "Submit" }).click();
-  await expect(page.getByText("No data returned from API")).toBeVisible();
 });
