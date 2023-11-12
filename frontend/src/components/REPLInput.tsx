@@ -89,7 +89,7 @@ export function REPLInput(props: REPLInputProps) {
 
   // Function to filter the geojson according to 4 boundaries.
   const filter: REPLFunction = async (command: string[]) => {
-    if (!command.length) {
+    if (command.length == 1) {
       return [["Error: No parameters provided."]];
     } else if (command.length < 5) {
       return [["Error: No bounding box given."]];
@@ -265,7 +265,7 @@ export function REPLInput(props: REPLInputProps) {
   // function to handle searching by area in map
   const SearchArea: REPLFunction = async (args: string[]) => {
     // No parameters provided
-    if (!args.length) {
+    if (args.length == 1) {
       return [["Error: No parameters provided."]];
     }
 
