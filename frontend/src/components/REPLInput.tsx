@@ -89,8 +89,12 @@ export function REPLInput(props: REPLInputProps) {
 
   // Function to filter the geojson according to 4 boundaries.
   const filter: REPLFunction = async (command: string[]) => {
-    if (command.length < 5) {
+    if (!command.length) {
+      return [["Error: No parameters provided."]];
+    } else if (command.length < 5) {
       return [["Error: No bounding box given."]];
+    } else if (command.length > 5) {
+      return [["Error: Too many arguments given."]];
     } else {
       try {
         const response = await fetch(
